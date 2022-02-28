@@ -49,7 +49,7 @@ def main():
             
             Currently, it supports only CSV, XLS and XLSX files.
             
-            To get started, drag a file or browse your local drive and select a file and click the "Upload 📤" button. If there is an issue reading an XLSX or XLS file, try converting it to CSV.
+            To get started, drag a file or browse your local drive and select a file and click the "Upload 📤" button. If there are any issues reading an XLSX or XLS file, try converting it to CSV.
         """)
 
     # file uploader
