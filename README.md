@@ -4,7 +4,9 @@
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/julianbel/data-profiler/main/app.py)
+<p align="center">
+    <a href="https://share.streamlit.io/julianbel/data-profiler/main/app.py" title="Streamlit App"><img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg"></a>
+</p>
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
