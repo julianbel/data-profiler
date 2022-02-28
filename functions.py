@@ -1,5 +1,5 @@
-from pandas import read_csv, read_excel
-from pathlib import Path
+from pandas import read_csv  #, read_excel
+from pandas.io.excel import read_excel
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -23,14 +23,23 @@ def get_data(file):
     
     """
 
-    if file.name.split('.')[-1] == 'xlsx':
-        df = read_excel(file, engine='openpyxl')
-    if file.name.split('.')[-1] == 'xls':
-        df = read_excel(file)
-    else:
+    engine = {'xlsx': 'openpyxl', 'xls': 'xlrd'}
+
+    ext = file.name.split('.')[-1]
+
+    if ext == 'csv':
         df = read_csv(file)
 
-    return df, file.name
+    else:
+        df = read_excel(file, sheet_name=0, engine=engine[ext])
+
+    for col in df.columns:
+        try:
+            df[col] = df[col].str.replace(',', '.').astype('float64')
+        except:
+            continue
+
+    return df
 
 
 def stats(dataframe):
@@ -149,26 +158,3 @@ def indicator_perc(stats_dict, kpi):
                       height=200,
                       margin=dict(l=10, r=10, b=0, t=10, pad=1))
     return fig
-
-
-def prettify_df(styler):
-    """
-    Styler function for pandas DataFrame.
-    
-    ------
-    Params
-    ------
-    
-        styler: pandas styler.
-        
-    ------
-    Returns
-    ------
-    
-        styler
-    """
-
-    styler.format(na_rep='MISSING', thousands=".")
-    styler.highlight_null(null_color='lightgrey')
-
-    return styler

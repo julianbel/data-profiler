@@ -57,7 +57,8 @@ def main():
     if submitted:
         # data upload
         if uploaded_file is not None:
-            data, file_name = funcs.get_data(uploaded_file)
+            uploaded_file.seek(0)
+            data = funcs.get_data(uploaded_file)
 
         # Dataset statistics
         with st.container():
@@ -92,10 +93,10 @@ def main():
                                 **{'config': config})
 
         with st.container():
-            st.dataframe(data=data.style.pipe(funcs.prettify_df).set_sticky(
-                axis='columns').set_caption(file_name),
-                         width=None,
-                         height=600)
+            st.dataframe(
+                data=data,  #.style.set_sticky(axis=1),
+                width=None,
+                height=600)
 
         # Pandas Profiling Report
         if report:
