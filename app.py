@@ -39,6 +39,18 @@ def main():
     st.markdown(
         f'<p style="text-align:center;background-image: linear-gradient(to right,{background_color}, {background_color});color:{font_color};font-family:sans-serif;font-size:42px;font-weight:bold;">{title}</p>',
         unsafe_allow_html=True)
+    
+    # explainer
+    with st.expander("App Usage"):
+        st.write("""
+            This is an app made to quickly explore a tabular dataset using Streamlit. It provides a view of the data in the shape of a pandas DataFrame while also providing basic statistics on the quality of the dataset.
+            
+            Additionally, it allows to generate a detailed report on the data of each column and their interactions using Pandas Profiling.
+            
+            Currently, it supports only CSV, XLS and XLSX files.
+            
+            To get started, drag a file or browse your local drive and select a file and click the "Upload 📤" button. If there is an issue reading an XLSX or XLS file, try converting it to CSV.
+        """)
 
     # file uploader
     with st.form(key='upload'):
