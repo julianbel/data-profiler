@@ -41,7 +41,7 @@ def main():
         unsafe_allow_html=True)
     
     # explainer
-    with st.expander("App Usage"):
+    with st.expander("About this app"):
         st.write("""
             This is an app made to quickly explore a tabular dataset using Streamlit. It provides a view of the data in the shape of a pandas DataFrame while also providing basic statistics on the quality of the dataset.
             
